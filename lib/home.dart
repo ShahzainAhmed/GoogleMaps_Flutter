@@ -19,26 +19,6 @@ class _HomeScreenState extends State<HomeScreen> {
     zoom: 14, // default zoom is 14
   );
 
-  final List<Marker> _marker = [];
-  final List<Marker> _list = const [
-    Marker(
-      markerId: MarkerId('1'),
-      position: LatLng(24.949399722210245, 67.18624017907798),
-      infoWindow: InfoWindow(title: "Current location"),
-    ),
-    Marker(
-      markerId: MarkerId('2'),
-      position: LatLng(24.94882305462028, 67.18456722596076),
-      infoWindow: InfoWindow(title: "Building 110"), 
-    ),
-  ];
-
-  @override
-  void initState() {
-    super.initState();
-    _marker.addAll(_list);
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,10 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: GoogleMap(
         initialCameraPosition: _kGooglePlex,
-        markers: Set<Marker>.of(_marker),
         mapType: MapType.satellite,
-        // myLocationButtonEnabled: true,
-        // myLocationEnabled: true,
         onMapCreated: (GoogleMapController controller) {
           _controller.complete(controller);
         },
